@@ -4,7 +4,7 @@ function message() {
   var spreadsheet = SpreadsheetApp.openByUrl(SPREADSHEET_URL);
   var sheet = spreadsheet.getSheets()[0];
 
-  var user_id_data = sheet.getRange(1, 2, sheet.getLastRow() - 1, 1).getValues();
+  var user_id_data = sheet.getRange(1, 2, sheet.getLastRow(), 1).getValues();
   var user_id = [];
 
   for (var i in user_id_data) {
@@ -13,7 +13,7 @@ function message() {
   var random = Math.floor(Math.random() * user_id.length);
 
   var message = `<!channel>\n`
-  message += `本日の議事録担当は<@${user_id[random]}>さんです。よろしくお願いします！`
+  message += `<@${user_id[random]}>さんが千楽されてました。よろしくお願いします！`
   message += `\n<${SPREADSHEET_URL}|候補の編集>`;
 
   var response = {
